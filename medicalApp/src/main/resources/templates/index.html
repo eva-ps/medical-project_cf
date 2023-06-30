@@ -1,0 +1,66 @@
+<!--<!DOCTYPE html>-->
+<!--<html xmlns:th="http://www.thymeleaf.org">-->
+
+<!--<head th:replace="fragments :: head">-->
+
+<!--<body>-->
+<!--    <div th:replace="fragments :: header"></div>-->
+<!--    <div class="index-container">-->
+<!--        <div class="index-left">-->
+<!--            <h3 class="index-banner-text">Clinic+<br><br>See the doctor,<br>without the wait.</h3>-->
+<!--        </div>-->
+<!--        <div class="index-right">-->
+<!--            <p>Looking for quick medical advice?<br>Tell us how you're feeling and a qualified professional* will-->
+<!--                respond-->
+<!--                with a recommendation right away.<br><br>Register as a Patient for free to receive the care you need,-->
+<!--                fast!-->
+<!--            </p>-->
+<!--            <a href="/patient_register" class="btn-pat">Sign me up</a>-->
+<!--            <p>Already one of our Patients?</p>-->
+<!--            <a href="/patient/login" class="btn-pat">Log In as Patient</a>-->
+<!--            <p>Medical professionals are essential to all of us. If you work in medicine, we'd love your help. We can-->
+<!--                connect you to those in need.</p>-->
+<!--            <a href="/doctor_register" class="btn-dr">Register as Doctor</a>-->
+<!--            <p>Already one of our Doctors?</p>-->
+<!--            <a href="/doctor/login" class="btn-dr">Log In as Doctor</a>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--    <div th:replace="fragments :: footer"></div>-->
+<!--</body>-->
+
+<!--</html>-->
+
+
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="fragments :: head">
+
+<body>
+<div th:replace="fragments :: header"></div>
+<div class="index-container">
+    <div class="index-left">
+        <h3 class="index-banner">Remote Speech & Special Education Services!</h3>
+        <h3 class="index-banner-text">The therapy place<br><br>See the therapist,<br>without the wait.</h3>
+    </div>
+    <div class="index-right">
+        <p><br>Our mission is to provide remote speech therapy and special education services!<br>
+            <br> Register or log in as a patient and let us know which service you are interested in. Provide details about your symptoms and activate the ticket,
+            so one of our therapists can contact you and provide all the necessary information regarding the start of the remote session.<br>
+        </p>
+        <p><br>New Patient?</p>
+        <a href="/patient_register" class="btn-pat">Sign me up<br></a>
+        <p>Already one of our Patients?</p>
+        <a href="/patient/login" class="btn-pat">Log In as Patient</a>
+        <p><br>If you are a professional therapist and interested in working in our happy place, please register!<br></p>
+        <a href="/doctor_register" class="btn-dr">Register as Therapist</a>
+        <p><br>Already one of our Therapists?<br></p>
+        <a href="/doctor/login" class="btn-dr">Log In as Therapist</a>
+    </div>
+</div>
+
+<div th:replace="fragments :: footer"></div>
+
+</body>
+
+</html>

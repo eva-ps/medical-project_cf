@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="fragments :: head">
+
+<body>
+    <div th:replace="fragments :: header-logged-in-patient"></div>
+    <div class="add-ticket-form">
+        <h2>Tell us which service do you prefer!</h2>
+        <br>
+        <p>And describe the symptoms so a therapist can suggest the appropriate program for you!</p>
+        <br>
+        <form th:action="@{/patient/processTicket}" th:object="${healthTicket}" method="POST">
+            <table>
+                <tr>
+                    <td>Service:</td>
+                    <td><textarea th:field="*{services}" cols="28" rows="5"></textarea></td>
+                </tr>
+                <tr>
+                    <td>Symptoms:</td>
+                    <td><textarea th:field="*{symptoms}" cols="28" rows="5"></textarea></td>
+                </tr>
+            </table>
+            <button type="submit">Create HealthTicket™</button>
+        </form>
+    </div>
+    <div th:replace="fragments :: footer"></div>
+</body>
+
+</html>

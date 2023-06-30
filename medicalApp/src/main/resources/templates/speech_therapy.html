@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="fragments :: head">
+
+
+<body>
+<div th:replace="fragments :: header"></div>
+<div>
+    <h1 class="title" th:text="${pageTitle}">Speech Therapy Page</h1>
+    <div class="text">
+        <p>Speech and language therapy provides treatment, support and care for children and adults
+            who have difficulties with communication, or with eating, drinking and swallowing.
+        </p>
+        <h3><strong>Speech therapy for children</strong></h3><br>
+        <p>A child may participate in speech therapy in a classroom as part of a small group or in a one-on-one setting.
+            This depends on which speech disorder they are experiencing.
+            The SLP will use therapeutic exercises and activities to help them overcome their specific issues.<br>
+            <br>
+            These include:<br>
+            <br>
+            <strong>Language activities:</strong> Involves playing and talking with the child while using pictures, books, and objects to stimulate language development. The SLP may also demonstrate correct pronunciation and use repetition exercises to help increase the child’s language skills.<br>
+            <br>
+            <strong>Articulation activities:</strong> These will involve the SLP working closely with a child to help them with their pronunciation. The SLP will demonstrate how to make specific sounds, often during play activities.<br>
+            <br>
+            <strong>Feeding and swallowing therapy:</strong> An SLP can work closely with a child with chewing or swallowing issues. The SLP can also use oral exercises to help strengthen the muscles in the mouth or work with different food textures to improve the child’s oral awareness.<br>
+            <br>
+            <strong>Exercises:</strong> The SLP may use a number of tongue, lip, and jaw exercises, alongside facial massage to help strengthen the muscles around the mouth. This can help them with future speech and communication.</p><br>
+        <h3><strong>Speech therapy for adults</strong></h3><br>
+        <p>An SLP can use several different techniques as part of adult speech therapy.<br>
+            <br>
+            These include: <br>
+            <br>
+            <strong>Social communication:</strong> The SLP may use problem-solving, memory activities, and conversation exercises to improve communication.<br>
+            <br>
+            <strong>Breathing exercises:</strong> An SLP may use breathing exercises to assist with resonance issues.<br>
+            <br>
+            <strong>Mouth exercises:</strong> These are a suitable way to strengthen oral muscles, which can help improve communication.<br>
+            <br>
+            <strong>Swallowing exercises:</strong> Medical issues, such as Parkinson’s disease, oral cancer, or a stroke, may cause swallowing difficulties. An SLP can use swallowing exercises to help a person manage these issues.</p><br>
+    </div>
+    <div class="image-gallery">
+        <div class="image-item">
+            <img class="img_speech" th:src="@{/images/speech-Icon1.png}" alt="Speech Icon 1">
+            <h3 class="image-title">Hearing Impairments</h3>
+        </div>
+        <div class="image-item">
+            <img class="img_speech" th:src="@{/images/speech-Icon2.png}" alt="Speech Icon 2">
+            <h3 class="image-title">Developmental or <br> Cognitive Delays</h3>
+        </div>
+        <div class="image-item">
+            <img class="img_speech" th:src="@{/images/speech-Icon3.png}" alt="Speech Icon 3">
+            <h3 class="image-title">Autism or Traumatic<br>Brain Injury (TBI)</h3>
+        </div>
+        <div class="image-item">
+            <img class="img_speech" th:src="@{/images/speech-Icon4.png}" alt="Speech Icon 4">
+            <h3 class="image-title">Weak Oral Muscles</h3>
+        </div>
+        <div class="image-item">
+            <img class="img_speech" th:src="@{/images/speech-Icon5.png}" alt="Speech Icon 5">
+            <h3 class="image-title">Birth Defects<br>such as Cleft Lip / Palate</h3>
+        </div>
+    </div>
+</div>
+<div th:replace="fragments :: footer"></div>
+
+
+</body>
+
+</html>

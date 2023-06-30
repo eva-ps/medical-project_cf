@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="fragments :: head">
+
+<body>
+    <div th:replace="fragments :: header-logged-in-doctor"></div>
+    <div class="viewTickets">
+        <div>
+            <h1>Health Tickets</h1>
+        </div>
+        <div>
+            <table class="ticketTable">
+                <thead>
+                    <tr>
+                        <th>Ticket ID</th>
+                        <th>Patient ID</th>
+                        <th>Service</th>
+                        <th>Symptoms</th>
+                        <th>Date Submitted</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="healthticket: ${listHealthtickets}" th:if="${healthticket.diagnosis == null}">
+                        <td th:text="${healthticket.ticketID}">Ticket ID</td>
+                        <td>
+                            <a title="View Patient's Information" th:href="@{'/doctor/view-patient/' + ${healthticket.patientID}}"
+                                th:text="${healthticket.patientID}"></a>
+                        </td>
+                        <td th:text="${healthticket.services}">Service</td>
+                        <td th:text="${healthticket.symptoms}">Symptoms</td>
+                        <td th:text="${healthticket.dateSubmitted}">Date Submitted</td>
+                        <td>
+                            <a th:href="@{'/doctor/edit-ticket/' + ${healthticket.ticketID}}">Add a Diagnosis</a>
+                            &nbsp;&nbsp;
+                            <a th:href="@{'/doctor/delete-ticket/' + ${healthticket.ticketID}}">Remove Ticket</a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <h4><a th:href="@{/doctor/homepage}">Back to Home</a></h4>
+        </div>
+    </div>
+    <div th:replace="fragments :: footer"></div>
+</body>
+
+</html>

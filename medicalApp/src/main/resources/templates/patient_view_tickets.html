@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="fragments :: head">
+
+<body>
+    <div th:replace="fragments :: header-logged-in-patient"></div>
+    <div class="viewTickets">
+        <div>
+            <h1>Health Tickets</h1>
+        </div>
+        <div>
+            <table class="ticketTable">
+                <thead>
+                    <tr>
+                        <th>Ticket ID</th>
+                        <th>Patient ID</th>
+                        <th>Service</th>
+                        <th>Symptoms</th>
+                        <th>Diagnosis</th>
+                        <th>Doctor ID</th>
+                        <th>Date Submitted</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                    <tr th:each="healthTicket: ${healthTicketList}">
+                        <td th:text="${healthTicket.ticketID}">Ticket ID</td>
+                        <td th:text="${healthTicket.patientID}">Patient ID</td>
+                        <td th:text="${healthTicket.services}">Service</td>
+                        <td th:text="${healthTicket.symptoms}">Symptoms</td>
+                        <td th:text="${healthTicket.diagnosis}">Diagnosis</td>
+                        <td> <a title="View Doctor's Contact information" th:href="@{'/patient/view-doctor/' + ${healthTicket.doctorID}}"
+                            th:text="${healthTicket.doctorID}" />
+                        </td>
+                        <td th:text="${healthTicket.dateSubmitted}">Date Submitted</td>
+                        <td th:if="${healthTicket.diagnosis == null}">
+                            <a th:href="@{'/patient/edit-ticket/' + ${healthTicket.ticketID}}">Edit</a>
+                            &nbsp;&nbsp;
+                            <a th:href="@{'/patient/delete-ticket/' + ${healthTicket.ticketID}}">Cancel Ticket</a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <h4><a th:href="@{/patient/homepage}">Back to Home</a></h4>
+        </div>
+    </div>
+    <div th:replace="fragments :: footer"></div>
+</body>
+
+</html>
