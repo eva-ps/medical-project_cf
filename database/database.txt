@@ -1,0 +1,81 @@
+MySQL  DATABASE medicaldb
+username:logo
+password:logo
+
+CREATE SCHEMA IF NOT EXISTS `medicaldb` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci ;
+USE `medicaldb` ;
+
+-- -----------------------------------------------------
+-- Table `medicaldb`.`doctor`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `medicaldb`.`doctor` (
+  `doctorID` VARCHAR(11) NOT NULL,
+  `first_name` VARCHAR(25) NOT NULL,
+  `last_name` VARCHAR(25) NOT NULL,
+  `email` VARCHAR(50) NOT NULL,
+  `password` VARCHAR(64) NOT NULL,
+  `date_of_birth` DATETIME NOT NULL,
+  `sex` VARCHAR(6) NOT NULL,
+  PRIMARY KEY (`doctorID`),
+  INDEX `idx_email` (`email` ASC) VISIBLE,
+  INDEX `idx_doctorID` (`doctorID` ASC) VISIBLE)
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = utf8mb4
+COLLATE = utf8mb4_0900_ai_ci;
+
+
+-- -----------------------------------------------------
+-- Table `medicaldb`.`patient`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `medicaldb`.`patient` (
+  `patientID` VARCHAR(11) NOT NULL,
+  `first_name` VARCHAR(25) NOT NULL,
+  `last_name` VARCHAR(25) NOT NULL,
+  `email` VARCHAR(50) NOT NULL,
+  `password` VARCHAR(65) NOT NULL,
+  `date_of_birth` DATETIME NOT NULL,
+  `sex` VARCHAR(6) NOT NULL,
+  `medical_conditions` VARCHAR(300) NOT NULL,
+  PRIMARY KEY (`patientID`),
+  INDEX `idx_email` (`email` ASC) VISIBLE,
+  INDEX `idx_patientID` (`patientID` ASC) VISIBLE)
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = utf8mb4
+COLLATE = utf8mb4_0900_ai_ci;
+
+
+-- -----------------------------------------------------
+-- Table `medicaldb`.`healthticket`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `medicaldb`.`healthticket` (
+  `ticketID` INT NOT NULL AUTO_INCREMENT,
+  `symptoms` VARCHAR(300) NOT NULL,
+  `diagnosis` VARCHAR(300) NULL DEFAULT NULL,
+  `date_submitted` DATE NULL DEFAULT NULL,
+  `patientID` VARCHAR(11) NULL DEFAULT NULL,
+  `doctorID` VARCHAR(11) NULL DEFAULT NULL,
+  `services` VARCHAR(300) NOT NULL,
+  PRIMARY KEY (`ticketID`),
+  INDEX `idx_ticketID` (`ticketID` ASC) VISIBLE,
+  INDEX `fk_patient` (`patientID` ASC) VISIBLE,
+  INDEX `fk_doctor` (`doctorID` ASC) VISIBLE,
+  CONSTRAINT `fk_doctor`
+    FOREIGN KEY (`doctorID`)
+    REFERENCES `medicaldb`.`doctor` (`doctorID`),
+  CONSTRAINT `fk_patient`
+    FOREIGN KEY (`patientID`)
+    REFERENCES `medicaldb`.`patient` (`patientID`))
+ENGINE = InnoDB
+AUTO_INCREMENT = 9
+DEFAULT CHARACTER SET = utf8mb4
+COLLATE = utf8mb4_0900_ai_ci;
+
+
+-- -----------------------------------------------------
+-- Table `medicaldb`.`hibernate_sequence`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `medicaldb`.`hibernate_sequence` (
+  `next_val` BIGINT NULL DEFAULT NULL)
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = utf8mb4
+COLLATE = utf8mb4_0900_ai_ci;
