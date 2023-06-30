@@ -2,13 +2,11 @@ MySQL  DATABASE medicaldb
 username:logo
 password:logo
 
-CREATE SCHEMA IF NOT EXISTS `medicaldb` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci ;
-USE `medicaldb` ;
 
 -- -----------------------------------------------------
 -- Table `medicaldb`.`doctor`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `medicaldb`.`doctor` (
+ `medicaldb`.`doctor` (
   `doctorID` VARCHAR(11) NOT NULL,
   `first_name` VARCHAR(25) NOT NULL,
   `last_name` VARCHAR(25) NOT NULL,
@@ -19,15 +17,12 @@ CREATE TABLE IF NOT EXISTS `medicaldb`.`doctor` (
   PRIMARY KEY (`doctorID`),
   INDEX `idx_email` (`email` ASC) VISIBLE,
   INDEX `idx_doctorID` (`doctorID` ASC) VISIBLE)
-ENGINE = InnoDB
-DEFAULT CHARACTER SET = utf8mb4
-COLLATE = utf8mb4_0900_ai_ci;
 
 
 -- -----------------------------------------------------
 -- Table `medicaldb`.`patient`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `medicaldb`.`patient` (
+`medicaldb`.`patient` (
   `patientID` VARCHAR(11) NOT NULL,
   `first_name` VARCHAR(25) NOT NULL,
   `last_name` VARCHAR(25) NOT NULL,
@@ -39,15 +34,12 @@ CREATE TABLE IF NOT EXISTS `medicaldb`.`patient` (
   PRIMARY KEY (`patientID`),
   INDEX `idx_email` (`email` ASC) VISIBLE,
   INDEX `idx_patientID` (`patientID` ASC) VISIBLE)
-ENGINE = InnoDB
-DEFAULT CHARACTER SET = utf8mb4
-COLLATE = utf8mb4_0900_ai_ci;
 
 
 -- -----------------------------------------------------
 -- Table `medicaldb`.`healthticket`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `medicaldb`.`healthticket` (
+ `medicaldb`.`healthticket` (
   `ticketID` INT NOT NULL AUTO_INCREMENT,
   `symptoms` VARCHAR(300) NOT NULL,
   `diagnosis` VARCHAR(300) NULL DEFAULT NULL,
@@ -65,10 +57,6 @@ CREATE TABLE IF NOT EXISTS `medicaldb`.`healthticket` (
   CONSTRAINT `fk_patient`
     FOREIGN KEY (`patientID`)
     REFERENCES `medicaldb`.`patient` (`patientID`))
-ENGINE = InnoDB
-AUTO_INCREMENT = 9
-DEFAULT CHARACTER SET = utf8mb4
-COLLATE = utf8mb4_0900_ai_ci;
 
 
 -- -----------------------------------------------------
@@ -76,6 +64,4 @@ COLLATE = utf8mb4_0900_ai_ci;
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `medicaldb`.`hibernate_sequence` (
   `next_val` BIGINT NULL DEFAULT NULL)
-ENGINE = InnoDB
-DEFAULT CHARACTER SET = utf8mb4
-COLLATE = utf8mb4_0900_ai_ci;
+
