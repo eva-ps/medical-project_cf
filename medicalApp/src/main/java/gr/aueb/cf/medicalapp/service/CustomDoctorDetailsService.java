@@ -16,7 +16,7 @@ import org.springframework.stereotype.Service;
 public class CustomDoctorDetailsService implements UserDetailsService {
 
     @Autowired
-    private DoctorRepository doctorRepo;
+    private DoctorRepository doctorRepository;
 
     /**
      * Loads the doctor user details by username (doctorID).
@@ -27,7 +27,7 @@ public class CustomDoctorDetailsService implements UserDetailsService {
      */
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        Doctor doctor = doctorRepo.findDoctorByEmail(username);
+        Doctor doctor = doctorRepository.findDoctorByEmail(username);
         if (doctor == null) {
             throw new UsernameNotFoundException("Doctor not found");
         }

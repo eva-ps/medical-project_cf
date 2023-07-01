@@ -11,13 +11,13 @@ public class ServicesController {
 
     @GetMapping("/speech_therapy")
     public String speechTherapyPage(Model model) {
-        model.addAttribute("pageTitle", "Speech Therapy Page");
+        model.addAttribute("pageTitle", "Speech Therapy");
         return "speech_therapy";
     }
 
     @GetMapping("/special_education")
     public String specialEducationPage(Model model) {
-        model.addAttribute("pageTitle", "Special Education Page");
+        model.addAttribute("pageTitle", "Special Education");
         return "special_education";
     }
 

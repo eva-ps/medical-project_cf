@@ -4,9 +4,9 @@ import gr.aueb.cf.medicalapp.model.CustomDoctorDetails;
 import gr.aueb.cf.medicalapp.model.Doctor;
 import gr.aueb.cf.medicalapp.model.HealthTicket;
 import gr.aueb.cf.medicalapp.model.Patient;
-import gr.aueb.cf.medicalapp.service.DoctorService;
-import gr.aueb.cf.medicalapp.service.HealthTicketService;
-import gr.aueb.cf.medicalapp.service.PatientService;
+import gr.aueb.cf.medicalapp.service.interfaces.IDoctorService;
+import gr.aueb.cf.medicalapp.service.interfaces.IHealthTicketService;
+import gr.aueb.cf.medicalapp.service.interfaces.IPatientService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -27,14 +27,22 @@ import java.util.List;
 @Controller
 public class DoctorController {
 
-    @Autowired
-    private DoctorService doctorService;
+
+    private final IDoctorService doctorService;
+
+
+    private final IHealthTicketService healthTicketService;
+
+
+    private final IPatientService patientService;
 
     @Autowired
-    private HealthTicketService healthTicketService;
+    public DoctorController(IDoctorService doctorService, IHealthTicketService healthTicketService, IPatientService patientService) {
+        this.doctorService = doctorService;
+        this.healthTicketService = healthTicketService;
+        this.patientService = patientService;
+    }
 
-    @Autowired
-    private PatientService patientService;
 
     /*-------------------------- DOCTOR REGISTRATION --------------------------*/
     /*---- REGISTER DOCTOR ----*/

@@ -2,6 +2,7 @@ package gr.aueb.cf.medicalapp.service;
 
 import gr.aueb.cf.medicalapp.model.Doctor;
 import gr.aueb.cf.medicalapp.repository.DoctorRepository;
+import gr.aueb.cf.medicalapp.service.interfaces.IDoctorService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -12,10 +13,10 @@ import java.util.List;
  */
 @Service
 @Transactional
-public class DoctorService {
+public class DoctorService implements IDoctorService {
 
     @Autowired
-    private DoctorRepository doctorRepo;
+    private DoctorRepository doctorRepository;
 
     /**
      * Retrieves all doctors.
@@ -23,7 +24,7 @@ public class DoctorService {
      * @return a list of all doctors
      */
     public List<Doctor> findAll() {
-        return doctorRepo.findAll();
+        return doctorRepository.findAll();
     }
 
     /**
@@ -33,7 +34,7 @@ public class DoctorService {
      * @return the doctor with the specified ID
      */
     public Doctor get(String doctorID) {
-        return doctorRepo.findById(doctorID).get();
+        return doctorRepository.findById(doctorID).get();
     }
 
     /**
@@ -43,7 +44,7 @@ public class DoctorService {
      * @return the logged-in doctor with the specified ID
      */
     public Doctor getLoggedInDoctor(String doctorID) {
-        return doctorRepo.findByDoctorID(doctorID);
+        return doctorRepository.findByDoctorID(doctorID);
     }
 
 
@@ -53,7 +54,7 @@ public class DoctorService {
      * @param doctor the doctor to be saved
      */
     public void save(Doctor doctor) {
-        doctorRepo.save(doctor);
+        doctorRepository.save(doctor);
     }
 
 
@@ -63,7 +64,7 @@ public class DoctorService {
      * @param doctorID the ID of the doctor to be deleted
      */
     public void delete(String doctorID) {
-        doctorRepo.deleteById(doctorID);
+        doctorRepository.deleteById(doctorID);
     }
 
     /**
@@ -74,6 +75,6 @@ public class DoctorService {
      */
     public boolean doctorExists(String doctorID) {
 
-        return doctorRepo.existsById(doctorID);
+        return doctorRepository.existsById(doctorID);
     }
 }

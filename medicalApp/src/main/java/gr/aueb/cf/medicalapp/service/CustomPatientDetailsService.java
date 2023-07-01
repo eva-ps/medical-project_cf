@@ -17,7 +17,7 @@ import org.springframework.stereotype.Service;
 public class CustomPatientDetailsService implements UserDetailsService {
 
     @Autowired
-    private   PatientRepository patientRepo;
+    private   PatientRepository patientRepository;
 
 
     /**
@@ -29,7 +29,7 @@ public class CustomPatientDetailsService implements UserDetailsService {
      */
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        Patient patient = patientRepo.findPatientByEmail(username);
+        Patient patient = patientRepository.findPatientByEmail(username);
         if (patient == null) {
             throw new UsernameNotFoundException("Patient not found");
         }

@@ -2,6 +2,7 @@ package gr.aueb.cf.medicalapp.service;
 
 import gr.aueb.cf.medicalapp.model.Patient;
 import gr.aueb.cf.medicalapp.repository.PatientRepository;
+import gr.aueb.cf.medicalapp.service.interfaces.IPatientService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -12,15 +13,15 @@ import java.util.List;
  */
 @Service
 @Transactional
-public class PatientService {
+public class PatientService implements IPatientService {
 
 
-    private final  PatientRepository patientRepo;
+    private final  PatientRepository patientRepository;
 
 
     @Autowired
     public PatientService(PatientRepository patientRepo) {
-        this.patientRepo = patientRepo;
+        this.patientRepository = patientRepo;
     }
 
     /**
@@ -29,7 +30,7 @@ public class PatientService {
      * @return a list of all patients
      */
     public List<Patient> findAll() {
-        return patientRepo.findAll();
+        return patientRepository.findAll();
     }
 
     /**
@@ -40,7 +41,7 @@ public class PatientService {
      */
     public Patient getLoggedInPatient(String patientID) {
 
-        return patientRepo.findByPatientID(patientID);
+        return patientRepository.findByPatientID(patientID);
     }
 
     /**
@@ -50,7 +51,7 @@ public class PatientService {
      * @return the patient with the specified ID
      */
     public Patient get(String patientID) {
-        return patientRepo.findById(patientID).get();
+        return patientRepository.findById(patientID).get();
     }
 
 
@@ -60,7 +61,7 @@ public class PatientService {
      * @param patient the patient to be saved
      */
     public void save(Patient patient) {
-        patientRepo.save(patient);
+        patientRepository.save(patient);
     }
 
 
@@ -70,7 +71,7 @@ public class PatientService {
      * @param patientID the ID of the patient to be deleted
      */
     public void delete(String patientID) {
-        patientRepo.deleteById(patientID);
+        patientRepository.deleteById(patientID);
     }
 
     /**
@@ -80,6 +81,6 @@ public class PatientService {
      * @return true if the patient exists, false otherwise
      */
     public boolean patientExists(String patientID) {
-        return patientRepo.existsById(patientID);
+        return patientRepository.existsById(patientID);
     }
 }

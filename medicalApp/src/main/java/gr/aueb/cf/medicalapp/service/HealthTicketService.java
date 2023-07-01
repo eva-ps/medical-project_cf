@@ -4,6 +4,7 @@ import gr.aueb.cf.medicalapp.model.Doctor;
 import gr.aueb.cf.medicalapp.model.HealthTicket;
 import gr.aueb.cf.medicalapp.model.Patient;
 import gr.aueb.cf.medicalapp.repository.HealthTicketRepository;
+import gr.aueb.cf.medicalapp.service.interfaces.IHealthTicketService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -14,10 +15,10 @@ import java.util.List;
  */
 @Service
 @Transactional
-public class HealthTicketService {
+public class HealthTicketService implements IHealthTicketService {
 
     @Autowired
-    private HealthTicketRepository healthRepo;
+    private HealthTicketRepository healthRepository;
 
     /**
      * Retrieves all health tickets.
@@ -25,7 +26,7 @@ public class HealthTicketService {
      * @return a list of all health tickets
      */
     public List<HealthTicket> findAll() {
-        return healthRepo.findAll();
+        return healthRepository.findAll();
     }
 
     /**
@@ -35,7 +36,7 @@ public class HealthTicketService {
      * @return the health ticket with the specified ID
      */
     public HealthTicket get(int ticketID) {
-        return healthRepo.findById(ticketID).get();
+        return healthRepository.findById(ticketID).get();
     }
 
     /**
@@ -45,7 +46,7 @@ public class HealthTicketService {
      * @return a list of health tickets for the specified patient
      */
     public List<HealthTicket> getByPatient(Patient patient) {
-        return healthRepo.findByPatientID(patient);
+        return healthRepository.findByPatientID(patient);
     }
 
 
@@ -55,7 +56,7 @@ public class HealthTicketService {
      * @param healthTicket the health ticket to be saved
      */
     public void save(HealthTicket healthTicket) {
-        healthRepo.save(healthTicket);
+        healthRepository.save(healthTicket);
     }
 
 
@@ -65,7 +66,7 @@ public class HealthTicketService {
      * @param ticketID the ID of the health ticket to be deleted
      */
     public void delete(int ticketID) {
-        healthRepo.deleteById(ticketID);
+        healthRepository.deleteById(ticketID);
     }
 
 
@@ -76,7 +77,7 @@ public class HealthTicketService {
      * @return a list of deleted health tickets for the specified patient
      */
     public List<HealthTicket> deleteAllByPatientID(Patient patient) {
-        return healthRepo.deleteAllByPatientID(patient);
+        return healthRepository.deleteAllByPatientID(patient);
     }
 
 
@@ -87,7 +88,7 @@ public class HealthTicketService {
      * @return a list of deleted health tickets for the specified doctor
      */
     public List<HealthTicket> deleteAllByDoctorID(Doctor doctor) {
-        return healthRepo.deleteAllByDoctorID(doctor);
+        return healthRepository.deleteAllByDoctorID(doctor);
     }
 
 
@@ -98,6 +99,6 @@ public class HealthTicketService {
      */
     public void update(HealthTicket healthTicket) {
         healthTicket.setTicketID(healthTicket.getTicketID());
-        healthRepo.save(healthTicket);
+        healthRepository.save(healthTicket);
     }
 }
