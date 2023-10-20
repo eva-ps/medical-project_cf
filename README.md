@@ -1,4 +1,4 @@
-# medical-project_cf-
+# medical-project_cf-final
 
 The project involves a management system for therapists and patients, providing remote speech therapy and special education services. The patient registers and then logs into the platform to create a ticket. During the ticket creation process, the patient specifies the desired service and describes the symptoms, and the ticket is activated.
 
